@@ -1,3 +1,4 @@
+<img width="1877" height="880" alt="image" src="https://github.com/user-attachments/assets/425d4bf7-404c-4c02-874f-240114960dd4" />
 # Templatos
 
 Templatos is a toolkit for building polished web interfaces and writing profile content, in one Next.js app.
