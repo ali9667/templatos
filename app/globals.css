@@ -1,0 +1,280 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * Templatos design tokens.
+ * One palette, one theme provider. Light is the default; dark is an explicit
+ * choice made with the toggle in the navbar (never inferred from the OS).
+ */
+:root {
+  --background: #f5f2ec;
+  --foreground: #1a1922;
+  --card: #ffffff;
+  --card-foreground: #1a1922;
+  --popover: #ffffff;
+  --popover-foreground: #1a1922;
+  --primary: #181a35;
+  --primary-foreground: #f7f6fb;
+  --secondary: #ece8df;
+  --secondary-foreground: #1a1922;
+  --muted: #ece8df;
+  --muted-foreground: #625f6c;
+  --accent: #e8e7fa;
+  --accent-foreground: #23206b;
+  --destructive: #b3261e;
+  --destructive-foreground: #ffffff;
+  --border: #ddd7ca;
+  --input: #d3ccbd;
+  --ring: #4640c8;
+  --brand: #4640c8;
+  --brand-soft: #e8e7fa;
+  --sunken: #ede9e0;
+  --deep: #15172e;
+  --deep-foreground: #ecebf6;
+  --deep-muted: #a9a8c2;
+  --deep-border: #2b2e4d;
+  --success: #1f7a4d;
+  --chart-1: #4640c8;
+  --chart-2: #2a8f8a;
+  --chart-3: #c2853a;
+  --chart-4: #8a5cc2;
+  --chart-5: #c25a5a;
+  --radius: 0.5rem;
+  --sidebar: #efebe3;
+  --sidebar-foreground: #1a1922;
+  --sidebar-primary: #4640c8;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #e4dfd3;
+  --sidebar-accent-foreground: #1a1922;
+  --sidebar-border: #ddd7ca;
+  --sidebar-ring: #4640c8;
+
+  --shadow-raised: 0 1px 2px rgb(26 25 34 / 0.06), 0 10px 28px -14px rgb(26 25 34 / 0.22);
+  --shadow-float: 0 2px 4px rgb(26 25 34 / 0.05), 0 28px 60px -28px rgb(26 25 34 / 0.38);
+
+  /* Liquid Glass custom properties (used by the glass components) */
+  --glass-bg: rgba(255, 255, 255, 0.1);
+  --glass-border: rgba(255, 255, 255, 0.2);
+  --glass-shadow: rgba(0, 0, 0, 0.37);
+  --glass-highlight: rgba(255, 255, 255, 0.2);
+  --glass-glow-cyan: rgba(6, 182, 212, 0.3);
+  --glass-glow-blue: rgba(59, 130, 246, 0.3);
+  --glass-glow-purple: rgba(168, 85, 247, 0.3);
+}
+
+.dark {
+  --background: #0f1017;
+  --foreground: #eeedf3;
+  --card: #171923;
+  --card-foreground: #eeedf3;
+  --popover: #171923;
+  --popover-foreground: #eeedf3;
+  --primary: #bdbbff;
+  --primary-foreground: #14152a;
+  --secondary: #1e2030;
+  --secondary-foreground: #eeedf3;
+  --muted: #1e2030;
+  --muted-foreground: #a5a3b6;
+  --accent: #262850;
+  --accent-foreground: #dcdbff;
+  --destructive: #ff8a80;
+  --destructive-foreground: #1a0a09;
+  --border: #2b2d3d;
+  --input: #34364a;
+  --ring: #9c99ff;
+  --brand: #9c99ff;
+  --brand-soft: #262850;
+  --sunken: #0b0c12;
+  --deep: #08090f;
+  --deep-foreground: #ecebf6;
+  --deep-muted: #a3a2bd;
+  --deep-border: #23253b;
+  --success: #5fd39a;
+  --chart-1: #9c99ff;
+  --chart-2: #5cc7c0;
+  --chart-3: #e0aa63;
+  --chart-4: #b891e6;
+  --chart-5: #e88888;
+  --sidebar: #12131c;
+  --sidebar-foreground: #eeedf3;
+  --sidebar-primary: #9c99ff;
+  --sidebar-primary-foreground: #14152a;
+  --sidebar-accent: #1e2030;
+  --sidebar-accent-foreground: #eeedf3;
+  --sidebar-border: #2b2d3d;
+  --sidebar-ring: #9c99ff;
+
+  --shadow-raised: 0 1px 2px rgb(0 0 0 / 0.4), 0 10px 28px -14px rgb(0 0 0 / 0.7);
+  --shadow-float: 0 2px 4px rgb(0 0 0 / 0.4), 0 28px 60px -28px rgb(0 0 0 / 0.8);
+
+  --glass-bg: rgba(255, 255, 255, 0.08);
+  --glass-border: rgba(255, 255, 255, 0.15);
+}
+
+@theme inline {
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, monospace;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-brand: var(--brand);
+  --color-brand-soft: var(--brand-soft);
+  --color-sunken: var(--sunken);
+  --color-deep: var(--deep);
+  --color-deep-foreground: var(--deep-foreground);
+  --color-deep-muted: var(--deep-muted);
+  --color-deep-border: var(--deep-border);
+  --color-success: var(--success);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 2px);
+  --radius-md: var(--radius);
+  --radius-lg: calc(var(--radius) + 2px);
+  --radius-xl: calc(var(--radius) + 6px);
+  --shadow-raised: var(--shadow-raised);
+  --shadow-float: var(--shadow-float);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Liquid Glass utility classes */
+@layer components {
+  .glass-surface {
+    @apply bg-white/10 backdrop-blur-xl border border-white/20;
+    box-shadow: 0 8px 32px var(--glass-shadow);
+  }
+
+  .glass-glow {
+    position: absolute;
+    inset: -4px;
+    border-radius: inherit;
+    opacity: 0.7;
+    filter: blur(16px);
+    background: linear-gradient(to right, var(--glass-glow-cyan), var(--glass-glow-blue), var(--glass-glow-purple));
+  }
+
+  .glass-highlight {
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    background: linear-gradient(to bottom, var(--glass-highlight), transparent);
+  }
+
+  .glass-inner-shadow {
+    position: absolute;
+    inset: 1px;
+    border-radius: inherit;
+    pointer-events: none;
+    box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.1);
+  }
+}
+
+@keyframes hero-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-reveal {
+  opacity: 0;
+  animation: hero-reveal 700ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.hero-reveal-1 {
+  animation-delay: 80ms;
+}
+
+.hero-reveal-2 {
+  animation-delay: 160ms;
+}
+
+.hero-reveal-3 {
+  animation-delay: 260ms;
+}
+
+.hero-reveal-4 {
+  animation-delay: 360ms;
+}
+
+@keyframes ripple {
+  0% {
+    transform: scale(0);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-reveal {
+    opacity: 1;
+    animation: none;
+  }
+}
+
+
+/* Indeterminate progress bar used while the AI provider is working */
+@keyframes loading-bar {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(350%); }
+}
+
+html {
+  color-scheme: light;
+  scroll-behavior: smooth;
+}
+html.dark {
+  color-scheme: dark;
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
+
+:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
